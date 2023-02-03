@@ -1,0 +1,93 @@
+datasource db {
+    provider = "cockroachdb"
+    url      = env("DATABASE_URL")
+}
+
+enum Role {
+    ADMIN
+    USER
+}
+
+enum Module {
+    GENERAL
+    MEDICAL
+    POVERTY
+    HUNGER
+    EDUCATION
+}
+
+enum DonationType {
+    ONE_TIME_MONEY
+    MONTHLY_MONEY
+    CLOTHES
+    FOOD
+    STATIONARY
+    OTHER
+    BLOOD
+}
+
+model Profile {
+    id         Int      @id @default(sequence())
+    user       User     @relation(fields: [userId], references: [id])
+    userId     Int      @unique
+    name       String
+    profession String
+    location   String
+    createdAt  DateTime @default(now())
+    updatedAt  DateTime @updatedAt
+}
+
+model User {
+    id        Int        @id @default(sequence())
+    email     String     @unique
+    password  String
+    role      Role       @default(USER)
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
+    Profile   Profile?
+    Donation  Donation[]
+}
+
+model Reciever {
+    id           Int        @id @default(sequence())
+    name         String
+    profession   String
+    location     String
+    organization String     @default("Individual")
+    createdAt    DateTime   @default(now())
+    updatedAt    DateTime   @updatedAt
+    Donation     Donation[]
+}
+
+model Donation {
+    id          Int          @id @default(sequence())
+    user        User         @relation(fields: [userId], references: [id])
+    userId      Int
+    type        DonationType
+    quantity    Int
+    decsription String
+    recieverId  Int
+    location    String
+    Reciever    Reciever     @relation(fields: [recieverId], references: [id])
+    createdAt   DateTime     @default(now())
+    updatedAt   DateTime     @updatedAt
+}
+
+model Inventory {
+    id          Int          @id @default(sequence())
+    type        DonationType
+    quantity    Int
+    decsription String
+    createdAt   DateTime     @default(now())
+    updatedAt   DateTime     @updatedAt
+}
+
+model Post {
+    id        Int      @id @default(sequence())
+    title     String
+    content   String
+    module    Module
+    image     String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
