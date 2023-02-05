@@ -35,6 +35,7 @@ const cors = require("cors"); // CORS is a node.js package for providing a Conne
 const cookieParser = require("cookie-parser"); // Parse Cookie header and populate req.cookies with an object keyed by the cookie names.
 const session = require("cookie-session"); // Simple cookie-based session middleware.
 const errorMiddleware = require("./middlewares/errors"); // Error Handler Middleware
+const routes = require("./routes/index");
 
 const app = express();
 
@@ -93,5 +94,7 @@ app.use(xss());
 app.use(errorMiddleware);
 
 // app.use(routes);
+app.use("/api", routes);
+
 
 module.exports = app;
