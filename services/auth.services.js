@@ -1,7 +1,7 @@
-const prisma = require("../database/dbClient");
 const bcrypt = require("bcryptjs");
 const jwt = require("../utils/jwt");
 const ErrorHandler = require("../utils/errorHandler");
+const prisma = require("../database/dbclient");
 
 // @desc    Register a user
 // @route   POST /api/auth/register

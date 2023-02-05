@@ -80,7 +80,7 @@ const limiter = rateLimit({
   message: "Too many Requests from this IP, please try again in an hour!",
 });
 
-// app.use("/", limiter);
+app.use("/", limiter);
 
 app.use(
   express.urlencoded({
@@ -95,6 +95,5 @@ app.use(errorMiddleware);
 
 // app.use(routes);
 app.use("/api", routes);
-
 
 module.exports = app;

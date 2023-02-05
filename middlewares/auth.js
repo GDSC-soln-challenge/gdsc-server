@@ -1,6 +1,6 @@
 const jwt = require("../utils/jwt");
 const createError = require("http-errors");
-const prisma = require("../database/dbClient");
+const prisma = require("../database/dbclient");
 
 const auth =
   (...roles) =>
