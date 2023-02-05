@@ -8,7 +8,7 @@ const ErrorHandler = require("../utils/errorHandler");
 
 class authService {
   static async registerUser(data) {
-    const { email, password } = data;
+    const { name, email, password } = data;
     const user = await prisma.user.findUnique({
       where: {
         email,
@@ -22,6 +22,7 @@ class authService {
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await prisma.user.create({
       data: {
+        name,
         email,
         password: hashedPassword,
       },
