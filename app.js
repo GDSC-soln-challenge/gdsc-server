@@ -34,6 +34,8 @@ const xss = require("xss-clean"); // Node.js Connect middleware to sanitize user
 const cors = require("cors"); // CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 const cookieParser = require("cookie-parser"); // Parse Cookie header and populate req.cookies with an object keyed by the cookie names.
 const session = require("cookie-session"); // Simple cookie-based session middleware.
+const errorMiddleware = require("./middlewares/errors"); // Error Handler Middleware
+const routes = require("./routes/index");
 
 const app = express();
 
@@ -78,7 +80,7 @@ const limiter = rateLimit({
   message: "Too many Requests from this IP, please try again in an hour!",
 });
 
-// app.use("/", limiter);
+app.use("/", limiter);
 
 app.use(
   express.urlencoded({
@@ -88,6 +90,10 @@ app.use(
 
 app.use(xss());
 
+// error handler
+app.use(errorMiddleware);
+
 // app.use(routes);
+app.use("/api", routes);
 
 module.exports = app;
