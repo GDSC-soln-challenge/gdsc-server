@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const user = require("../controllers/auth.controller");
+const user = require("../controllers/auth");
 const auth = require("../middlewares/auth");
-// const { isAuthenticatedUser, authorizeRoles } = require("../middlewares/auth");
+const { isAuthenticatedUser, authorizeRoles } = require("../middlewares/auth");
 
 // @desc    Register a user
 // @route   POST /api/auth/register
