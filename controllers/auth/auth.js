@@ -1,6 +1,6 @@
-const auth = require("../services/auth");
+const auth = require("../../services/auth");
 const createError = require("http-errors");
-const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
+const catchAsyncErrors = require("../../middlewares/catchAsyncErrors");
 
 const register = catchAsyncErrors(async (req, res, next) => {
   try {
