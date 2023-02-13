@@ -13,8 +13,6 @@ router.post("/login", user.login);
 
 // @desc    Get user all
 // @route   GET /api/auth/all
-
-
 router.get("/all", auth("ADMIN"), user.getAllUsers);
 
 module.exports = router;
