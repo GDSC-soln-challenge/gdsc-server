@@ -12,7 +12,6 @@ router.post("/register/profile", user.registerProfile);
 
 // @desc    Login a user
 // @route   POST /api/auth/login
-
 router.post("/login", user.login);
 
 // @desc    Get user profile
@@ -20,9 +19,7 @@ router.post("/login", user.login);
 router.get("/profile/:id", user.getUserProfile);
 
 // @desc    Get user all
-
 // @route   GET /api/auth/all
-
 router.get("/all", auth("ADMIN"), user.getAllUsers);
 
 module.exports = router;
