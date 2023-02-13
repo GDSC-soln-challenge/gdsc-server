@@ -9,11 +9,9 @@ router.post("/register", user.register);
 
 // @desc    Login a user
 // @route   POST /api/auth/login
-
 router.post("/login", user.login);
 
 // @desc    Get user all
-
 // @route   GET /api/auth/all
 
 
