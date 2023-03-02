@@ -1,11 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("./auth");
+const poverty = require("./poverty");
 const createError = require("http-errors");
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 
-router.use("/auth", auth);
 
+router.use("/auth", auth);
+//poverty Module
+router.use("/poverty", poverty);
 router.use(
   catchAsyncErrors(async (req, res, next) => {
     next(createError.NotFound("This route does not exist"));

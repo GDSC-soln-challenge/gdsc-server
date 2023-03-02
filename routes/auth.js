@@ -16,6 +16,7 @@ router.post("/login", user.login);
 
 // @route   GET /api/auth/all
 
+
 router.get("/all", auth("ADMIN"), user.getAllUsers);
 
 module.exports = router;

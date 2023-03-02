@@ -43,14 +43,14 @@ model Reciever {
 model Donation {
   id          Int          @id @default(sequence())
   userId      Int
-  type        DonationType
+  type        DonationType   @default(OTHER)
   quantity    Int
   description String
-  recieverId  Int
+  recieverId  Int?
   location    String
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
-  Reciever    Reciever     @relation(fields: [recieverId], references: [id])
+  Reciever    Reciever?     @relation(fields: [recieverId], references: [id])
   user        User         @relation(fields: [userId], references: [id])
 }
 
@@ -87,7 +87,7 @@ enum Module {
 }
 
 enum DonationType {
-  ONE_TIME_MONEY
+  ONE_TIME_MONEY 
   MONTHLY_MONEY
   CLOTHES
   FOOD
