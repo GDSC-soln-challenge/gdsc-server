@@ -689,6 +689,7 @@ prisma@^4.10.1:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/prisma/-/prisma-4.10.1.tgz#88084695d7b364ae6bebf93d5006f84439c4e7d1"
 =======
   resolved "https://registry.yarnpkg.com/prisma/-/prisma-4.10.1.tgz#88084695d7b364ae6bebf93d5006f84439c4e7d1"
@@ -702,6 +703,8 @@ prisma@^4.10.1:
 >>>>>>> 9059c91 (Wadiya (#5))
 =======
 >>>>>>> 59b4f4e (auth setup)
+=======
+>>>>>>> 1b3e3ea (Wadiya (#5))
   resolved "https://registry.yarnpkg.com/prisma/-/prisma-4.10.1.tgz#88084695d7b364ae6bebf93d5006f84439c4e7d1"
 =======
   resolved "https://registry.npmjs.org/prisma/-/prisma-4.10.1.tgz#88084695d7b364ae6bebf93d5006f84439c4e7d1"
@@ -755,7 +758,16 @@ prisma@^4.10.1:
 =======
   resolved "https://registry.npmjs.org/prisma/-/prisma-4.10.1.tgz#88084695d7b364ae6bebf93d5006f84439c4e7d1"
 >>>>>>> aa7f391 (auth setup)
+<<<<<<< HEAD
 >>>>>>> 59b4f4e (auth setup)
+=======
+=======
+  resolved "https://registry.npmjs.org/prisma/-/prisma-4.10.1.tgz#88084695d7b364ae6bebf93d5006f84439c4e7d1"
+=======
+  resolved "https://registry.yarnpkg.com/prisma/-/prisma-4.10.1.tgz#88084695d7b364ae6bebf93d5006f84439c4e7d1"
+>>>>>>> fda83c5 (Wadiya (#5))
+>>>>>>> baed2cb (Wadiya (#5))
+>>>>>>> 1b3e3ea (Wadiya (#5))
   integrity sha512-0jDxgg+DruB1kHVNlcspXQB9au62IFfVg9drkhzXudszHNUAQn0lVuu+T8np0uC2z1nKD5S3qPeCyR8u5YFLnA==
   dependencies:
     "@prisma/engines" "4.10.1"
