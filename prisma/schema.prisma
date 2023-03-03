@@ -32,19 +32,31 @@ enum DonationType {
 
 model Profile {
   id         Int      @id @default(sequence())
+<<<<<<< HEAD
   // userId     Int      @unique
   name       String
   phone      String
+=======
+  userId     Int      @unique
+>>>>>>> fda83c5 (Wadiya (#5))
   profession String
   location   String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+<<<<<<< HEAD
   user       User     @relation(fields: [id], references: [id])
+=======
+  user       User     @relation(fields: [userId], references: [id])
+>>>>>>> fda83c5 (Wadiya (#5))
 }
 
 model User {
   id        Int        @id @default(sequence())
   email     String     @unique
+<<<<<<< HEAD
+=======
+  name      String
+>>>>>>> fda83c5 (Wadiya (#5))
   password  String
   role      Role       @default(USER)
   createdAt DateTime   @default(now())
