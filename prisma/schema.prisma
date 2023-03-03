@@ -7,6 +7,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  ADMIN
+  USER
+}
+
+enum Module {
+  GENERAL
+  MEDICAL
+  POVERTY
+  HUNGER
+  EDUCATION
+}
+
+enum DonationType {
+  ONE_TIME_MONEY
+  MONTHLY_MONEY
+  CLOTHES
+  FOOD
+  STATIONARY
+  OTHER
+  BLOOD
+}
+
 model Profile {
   id         Int      @id @default(sequence())
   // userId     Int      @unique
@@ -44,14 +67,14 @@ model Reciever {
 model Donation {
   id          Int          @id @default(sequence())
   userId      Int
-  type        DonationType
+  type        DonationType @default(OTHER)
   quantity    Int
   description String
-  recieverId  Int
+  recieverId  Int?
   location    String
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
-  Reciever    Reciever     @relation(fields: [recieverId], references: [id])
+  Reciever    Reciever?    @relation(fields: [recieverId], references: [id])
   user        User         @relation(fields: [userId], references: [id])
 }
 
@@ -72,27 +95,4 @@ model Post {
   image     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-enum Role {
-  ADMIN
-  USER
-}
-
-enum Module {
-  GENERAL
-  MEDICAL
-  POVERTY
-  HUNGER
-  EDUCATION
-}
-
-enum DonationType {
-  ONE_TIME_MONEY
-  MONTHLY_MONEY
-  CLOTHES
-  FOOD
-  STATIONARY
-  OTHER
-  BLOOD
 }

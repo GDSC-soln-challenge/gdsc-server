@@ -11,6 +11,7 @@ const register = catchAsyncErrors(async (req, res, next) => {
       data,
     });
   } catch (e) {
+    console.log("Error: ", e);
     next(createError(e.statusCode, e.message));
   }
 });

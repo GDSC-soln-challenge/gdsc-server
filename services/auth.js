@@ -23,6 +23,7 @@ const registerUser = async (data) => {
     data: {
       email,
       password: hashedPassword,
+      type: type,
     },
   });
 
@@ -55,10 +56,11 @@ const registerUserProfile = async (data) => {
 // @desc    Login a user
 // @route   POST /api/auth/login
 const loginUser = async (data) => {
-  const { email, password } = data;
+  const { email, password, type } = data;
   const user = await prisma.user.findUnique({
     where: {
       email,
+      type,
     },
   });
 
