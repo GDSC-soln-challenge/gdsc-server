@@ -23,6 +23,7 @@ const registerUser = async (data) => {
     data: {
       email,
       password: hashedPassword,
+      type: type,
     },
   });
 

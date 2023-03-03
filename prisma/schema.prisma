@@ -21,7 +21,7 @@ enum Module {
 }
 
 enum DonationType {
-  ONE_TIME_MONEY 
+  ONE_TIME_MONEY
   MONTHLY_MONEY
   CLOTHES
   FOOD
@@ -31,7 +31,7 @@ enum DonationType {
 }
 
 model Profile {
-  id     Int      @id @default(sequence())
+  id         Int      @id @default(sequence())
   name       String
   phone      String
   profession String
