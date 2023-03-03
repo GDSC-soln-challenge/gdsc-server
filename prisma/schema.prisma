@@ -21,7 +21,7 @@ enum Module {
 }
 
 enum DonationType {
-  ONE_TIME_MONEY 
+  ONE_TIME_MONEY
   MONTHLY_MONEY
   CLOTHES
   FOOD
