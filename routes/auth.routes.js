@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const user = require("../controllers/auth");
+const user = require("../controllers/auth/auth");
 const auth = require("../middlewares/auth");
 
 // @desc    Register a user
