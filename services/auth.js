@@ -22,11 +22,11 @@ const registerUser = async (data) => {
   const newUser = await prisma.user.create({
     data: {
       email,
-      password: hashedPassword,
-      type: type,
+      password: hashedPassword
+      // type: type,
     },
   });
-
+  console.log("newUser", newUser);
   delete newUser.password;
   const accessToken = await jwt.signAccessToken({ id: newUser.id });
   return { ...newUser, accessToken };

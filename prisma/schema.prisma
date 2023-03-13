@@ -45,7 +45,6 @@ model Profile {
 model User {
   id        Int        @id @default(sequence())
   email     String     @unique
-  name      String
   password  String
   role      Role       @default(USER)
   createdAt DateTime   @default(now())
