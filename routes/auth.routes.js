@@ -14,6 +14,10 @@ router.post("/register/profile", user.registerProfile);
 // @route   POST /api/auth/login
 router.post("/login", user.login);
 
+// @desc    Logout a user
+// @route   POST /api/auth/logout
+// router.post("/logout", user.logout);
+
 // @desc    Get user profile
 // @route   GET /api/auth/profile
 router.get("/profile/:id", user.getUserProfile);

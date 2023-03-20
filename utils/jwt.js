@@ -32,4 +32,17 @@ module.exports = {
       });
     });
   },
+
+  deleteAccessToken: (token) => {
+    return new Promise((resolve, reject) => {
+      jwt.destroy(token, (err, payload) => {
+        if (err) {
+          const message =
+            err.name === "JsonWebTokenError" ? "Unauthorized" : err.message;
+          reject(createError.Unauthorized(message));
+        }
+        resolve(payload);
+      });
+    });
+  }
 };

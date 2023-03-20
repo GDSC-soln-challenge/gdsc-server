@@ -31,8 +31,7 @@ enum DonationType {
 }
 
 model Profile {
-  id         Int      @id @default(sequence())
-  userId     Int      @unique
+  id     Int      @id @default(sequence())
   name       String
   phone      String
   profession String
