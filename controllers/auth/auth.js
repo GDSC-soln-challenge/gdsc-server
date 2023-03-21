@@ -11,6 +11,7 @@ const register = catchAsyncErrors(async (req, res, next) => {
       data,
     });
   } catch (e) {
+    console.log(e);
     next(createError(e.statusCode, e.message));
   }
 });
@@ -18,12 +19,14 @@ const register = catchAsyncErrors(async (req, res, next) => {
 const registerProfile = catchAsyncErrors(async (req, res, next) => {
   try {
     const data = await auth.registerUserProfile(req.body);
+    console.log("data", data);
     res.status(200).json({
       status: true,
       message: "Profile registration successful",
       data,
     });
   } catch (e) {
+    console.log(e);
     next(createError(e.statusCode, e.message));
   }
 });

@@ -23,7 +23,6 @@ const registerUser = async (data) => {
     data: {
       email,
       password: hashedPassword,
-      type: type,
     },
   });
 
@@ -37,6 +36,7 @@ const registerUser = async (data) => {
 
 const registerUserProfile = async (data) => {
   const { name, profession, location, phone } = data;
+  console.log("data", data);
   try {
     const profile = await prisma.profile.create({
       data: {
@@ -46,7 +46,6 @@ const registerUserProfile = async (data) => {
         phone,
       },
     });
-    // console.log(profile);
     return profile;
   } catch (err) {
     console.log(err);
@@ -93,7 +92,17 @@ const getUserProfile = async (id) => {
     throw new ErrorHandler(404, "User not found");
   }
 
-  return user;
+  const profile = await prisma.profile.findUnique({
+    where: {
+      id: user.id,
+    },
+  });
+
+  if (!profile) {
+    throw new ErrorHandler(404, "Profile not found");
+  }
+
+  return { ...user, ...profile}
 };
 
 // @desc    Get user all
