@@ -7,7 +7,7 @@ const prisma = require("../database/dbclient");
 // @route   POST /api/auth/register
 
 const registerUser = async (data) => {
-  const { name, email, password, type } = data;
+  const { email, password } = data;
   const user = await prisma.user.findUnique({
     where: {
       email,
@@ -21,10 +21,8 @@ const registerUser = async (data) => {
   const hashedPassword = await bcrypt.hash(password, 10);
   const newUser = await prisma.user.create({
     data: {
-      name,
       email,
       password: hashedPassword,
-      type: type,
     },
   });
 
@@ -32,7 +30,6 @@ const registerUser = async (data) => {
   const accessToken = await jwt.signAccessToken({ id: newUser.id });
   return { ...newUser, accessToken };
 };
-
 // @desc    Login a user
 // @route   POST /api/auth/login
 const loginUser = async (data) => {

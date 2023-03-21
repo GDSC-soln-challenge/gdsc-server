@@ -1,5 +1,6 @@
 const prisma = require("../database/dbclient");
 const ErrorHandler = require("../utils/errorHandler");
+
 const addPovertyDonation = async (data) => {
   const { userId, type, quantity, description, location } = data;
   console.log(data);
@@ -23,6 +24,16 @@ const addPovertyDonation = async (data) => {
   return newPovertyDonation;
 };
 
+const getAllDonations = async () => {
+  const allDonations = await prisma.donation.findMany({
+    include: {
+      user: true,
+    },
+  });
+  return allDonations;
+}
+
 module.exports = {
   addPovertyDonation,
+  getAllDonations,
 };

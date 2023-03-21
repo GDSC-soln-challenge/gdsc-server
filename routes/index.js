@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("./auth");
-const poverty = require("./poverty");
+const auth = require("./auth.routes");
+const poverty = require("./poverty.routes");
 const createError = require("http-errors");
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 
