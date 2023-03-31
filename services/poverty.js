@@ -24,16 +24,37 @@ const addPovertyDonation = async (data) => {
   return newPovertyDonation;
 };
 
-const getAllDonations = async () => {
-  const allDonations = await prisma.donation.findMany({
-    include: {
-      user: true,
-    },
-  });
-  return allDonations;
-}
+const getDonations = async () => {
+  //findmany where type is poverty
 
+  const donations = await prisma.donation.findMany({
+    where:{
+    OR: [
+      {
+        type: {
+          equals: 'ONE_TIME_MONEY',
+        },
+      },
+      { type: { equals: 'MONTHLY_MONEY' } },
+    ],
+  }
+  });
+  return donations;
+};
+const getDonationById = async (donationId) => {
+  console.log("id: ",donationId);
+  //convert string to number
+  donationId = parseInt(donationId);
+  const donation = await prisma.donation.findUnique({
+      where: {
+          id: donationId,
+      },
+  });
+  return donation;
+}
 module.exports = {
   addPovertyDonation,
-  getAllDonations,
+  getDonations,
+  getDonationById
+
 };

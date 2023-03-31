@@ -7,38 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  ADMIN
-  USER
-}
-
-enum Module {
-  GENERAL
-  MEDICAL
-  POVERTY
-  HUNGER
-  EDUCATION
-}
-
-enum DonationType {
-  ONE_TIME_MONEY
-  MONTHLY_MONEY
-  CLOTHES
-  FOOD
-  STATIONARY
-  OTHER
-  BLOOD
-}
-
 model Profile {
-  id         Int      @id @default(sequence())
-  userId     Int      @unique
+  id     Int      @id @default(sequence())
+  name       String
+  phone      String
   profession String
   location   String
-  name       String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-  user       User     @relation(fields: [userId], references: [id])
+  user       User     @relation(fields: [id], references: [id])
 }
 
 model User {
@@ -69,6 +46,7 @@ model Donation {
   type        DonationType @default(OTHER)
   quantity    Int
   description String
+  organization String     @default("Individual")
   recieverId  Int?
   location    String
   createdAt   DateTime     @default(now())
@@ -94,4 +72,27 @@ model Post {
   image     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum Module {
+  GENERAL
+  MEDICAL
+  POVERTY
+  HUNGER
+  EDUCATION
+}
+
+enum DonationType {
+  ONE_TIME_MONEY
+  MONTHLY_MONEY
+  CLOTHES
+  FOOD
+  STATIONARY
+  OTHER
+  BLOOD
 }
