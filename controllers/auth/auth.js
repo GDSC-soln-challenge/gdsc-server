@@ -72,10 +72,42 @@ const getAllUsers = catchAsyncErrors(async (req, res, next) => {
   }
 });
 
+const getDonation = catchAsyncErrors(async (req, res, next) => {
+  try {
+    const allDonations = await poverty.getDonation();
+    res.status(200).json({
+      success: true,
+      allDonations,
+    });
+    console.log("allDonations coming: ", allDonations);
+  }
+  catch (e) {
+    console.log("Error: ", e);
+    next(createError(e.statusCode, e.message));
+  }
+});
+const getDonationById = catchAsyncErrors(async (req, res, next) => {
+  try {
+    console.log("C id: ", req.params.id);
+    const donationId = req.params.id;
+    const donation = await poverty.getDonationById(donationId);
+    res.status(200).json({
+      success: true,
+      donation,
+    });
+    console.log("Here: ", donation);
+  }
+  catch (e) {
+    console.log("Error: ", e);
+    next(createError(e.statusCode, e.message));
+  }
+});
 module.exports = {
   register,
   login,
   getAllUsers,
   registerProfile,
   getUserProfile,
+  getDonation,
+  getDonationById
 };

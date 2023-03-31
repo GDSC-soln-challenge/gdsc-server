@@ -23,7 +23,6 @@ const registerUser = async (data) => {
     data: {
       email,
       password: hashedPassword,
-      type: type,
     },
   });
 
@@ -36,7 +35,7 @@ const registerUser = async (data) => {
 // @route   POST /api/auth/register/profile
 
 const registerUserProfile = async (data) => {
-  const { name, profession, location, phone } = data;
+  const { name, profession, location, phone, organization} = data;
   console.log("data", data);
   try {
     const profile = await prisma.profile.create({
@@ -45,6 +44,7 @@ const registerUserProfile = async (data) => {
         profession,
         location,
         phone,
+        organization
       },
     });
     return profile;
@@ -118,10 +118,28 @@ const getAllUsers = async () => {
   return users;
 };
 
+//get all donations
+const getDonation = async (req, res) => {
+  const allDonations = await prisma.donation.findMany();
+  return allDonations;
+};
+const getDonationById = async (donationId) => {
+  console.log("id: ",donationId);
+  //convert string to number
+  donationId = parseInt(donationId);
+  const donation = await prisma.donation.findUnique({
+      where: {
+          id: donationId,
+      },
+  });
+  return donation;
+}
 module.exports = {
   registerUser,
   loginUser,
   getAllUsers,
   registerUserProfile,
   getUserProfile,
+  getDonation,
+  getDonationById,
 };

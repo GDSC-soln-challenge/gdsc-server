@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const user = require("../controllers/auth/auth");
 const auth = require("../middlewares/auth");
-
+const poverty = require("../controllers/poverty/poverty");
 // @desc    Register a user
 // @route   POST /api/auth/register
 router.post("/register", user.register);
@@ -25,5 +25,6 @@ router.get("/profile/:id", user.getUserProfile);
 // @desc    Get user all
 // @route   GET /api/auth/all
 router.get("/all", auth("ADMIN"), user.getAllUsers);
-
+router.get("/getdonations", auth("ADMIN"), user.getDonation);
+router.get("/getdonations/:id", auth("ADMIN"), user.getDonationById);
 module.exports = router;
